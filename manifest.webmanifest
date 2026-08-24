@@ -1,0 +1,12 @@
+{
+  "name": "Swap Tron",
+  "short_name": "Swap Tron",
+  "description": "Trade TRX, USDT and TRC-20 tokens on the TRON network through a decentralized exchange.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "lang": "en",
+  "background_color": "#0a0e14",
+  "theme_color": "#0a0e14",
+  "icons": [{ "src": "trx.png", "sizes": "any", "type": "image/png", "purpose": "any" }]
+}

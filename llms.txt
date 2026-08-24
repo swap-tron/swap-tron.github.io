@@ -1,0 +1,25 @@
+# Swap Tron — Swap Tokens on TRON Reference
+
+> Trade TRX, USDT and TRC-20 tokens on the TRON network through a non-custodial decentralized exchange. Resources paid in TRX. Independent, not affiliated with TRON.
+
+## Key Facts
+- TRON: layer-1 blockchain; native coin TRX; tokens follow the TRC-20 standard
+- USDT on TRON (TRC-20) is among the most widely used stablecoin transfers
+- Swaps route through on-chain DEXs (SunSwap-style); uses TRON wallets like TronLink
+- Fees: TRON meters transactions with bandwidth and energy, paid by burning TRX or staking TRX
+- Also: DEX pool fee + price impact; a TRC-20 interaction can need a one-time approval
+- Custody: non-custodial — wallet signs; settlement through on-chain smart contracts
+- Independent resource — NOT affiliated with or endorsed by the TRON Foundation
+
+## Internal Sections & App Navigation
+- [What is Swap Tron?](#what)
+- [How swapping works](#how)
+- [TRON network & wallets](#network)
+- [TRC-20 tokens & pairs](#tokens)
+- [Energy, bandwidth & fees](#fees)
+- [Is it safe?](#safety)
+- [FAQ](#faq)
+- [Open Swap Tron App](dashboard/index.html)
+
+## Disclaimer
+Independent page. Not affiliated with or endorsed by the TRON Foundation or any DEX. Not financial advice.
