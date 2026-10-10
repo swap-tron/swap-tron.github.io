@@ -1,371 +1,1187 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Swap Tron — Swap Tokens on TRON</title>
-<meta content="Swap Tron: trade TRX, USDT and TRC-20 tokens on the TRON network through a non-custodial decentralized exchange. How swapping works, TRC-20 tokens, energy and bandwidth fees, wallets and safety. Independent, not affiliated with TRON." name="description"/>
-<meta content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" name="robots"/>
-<meta content="#0a0e14" name="theme-color"/>
-<link href="https://swap-tron.github.io/" rel="canonical"/>
-<link href="trx.png" rel="icon" type="image/png"/>
-<link href="trx.png" rel="apple-touch-icon"/>
-<link href="manifest.webmanifest" rel="manifest"/>
-<link href="trx.png" rel="image_src"/>
-<link crossorigin="" href="https://api.coingecko.com" rel="preconnect"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tron Swap — Trade TRX, USDT and TRC-20 Tokens</title>
+<meta name="description" content="Make a Tron Swap between TRX, TRC-20 USDT and other tokens directly on TRON. See the rate, the fee paid in Energy and Bandwidth, and the amount you will receive before you sign, and keep your own keys the whole time.">
+<link rel="canonical" href="https://swap-tron.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tron Swap">
+<meta property="og:description" content="Make a Tron Swap between TRX, TRC-20 USDT and other tokens directly on TRON. See the rate, the fee paid in Energy and Bandwidth, and the amount you will receive before you sign, and keep your own keys the whole time.">
+<meta property="og:url" content="https://swap-tron.github.io/">
+<meta property="og:image" content="https://swap-tron.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tron Swap">
+<meta name="twitter:description" content="Make a Tron Swap between TRX, TRC-20 USDT and other tokens directly on TRON. See the rate, the fee paid in Energy and Bandwidth, and the amount you will receive before you sign, and keep your own keys the whole time.">
+<meta name="twitter:image" content="https://swap-tron.github.io/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lexend:wght@500;600;700&display=swap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://swap-tron.github.io/#website", "url": "https://swap-tron.github.io/", "name": "Tron Swap — Trade TRX, USDT and TRC-20 Tokens"}, {"@type": "WebPage", "@id": "https://swap-tron.github.io/#webpage", "url": "https://swap-tron.github.io/", "name": "Tron Swap — Trade TRX, USDT and TRC-20 Tokens", "isPartOf": {"@id": "https://swap-tron.github.io/#website"}, "description": "Make a Tron Swap between TRX, TRC-20 USDT and other tokens directly on TRON. See the rate, the fee paid in Energy and Bandwidth, and the amount you will receive before you sign, and keep your own keys the whole time.", "datePublished": "2026-10-10", "dateModified": "2026-10-10"}, {"@type": "SoftwareApplication", "name": "Tron Swap", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://swap-tron.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Swaps"}, {"@type": "ListItem", "position": 3, "name": "Tron Swap"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a Tron Swap?", "acceptedAnswer": {"@type": "Answer", "text": "A Tron Swap is a token trade executed on the TRON blockchain through a decentralized exchange, where a liquidity pool sets the price and settles the exchange in one on-chain transaction, with no custodial order book involved."}}, {"@type": "Question", "name": "Why is TRX/USDT liquidity so deep on TRON?", "acceptedAnswer": {"@type": "Answer", "text": "TRC-20 USDT settles cheaply and quickly, which has made it a preferred rail for transfers and exchange deposits across many markets. That volume concentrates deep liquidity in the TRX/USDT pools a swap draws from, keeping quoted prices close to what you actually receive."}}, {"@type": "Question", "name": "How does TRON charge fees instead of gas?", "acceptedAnswer": {"@type": "Answer", "text": "TRON bills transactions through two resources, Energy and Bandwidth, with a free daily allowance from staking TRX. Any amount beyond that allowance is paid in TRX burned on the spot, which usually keeps a routine swap at a small fraction of a cent."}}, {"@type": "Question", "name": "What is SunSwap?", "acceptedAnswer": {"@type": "Answer", "text": "SunSwap is the largest automated market maker native to TRON, pairing TRX, USDT and a wide range of TRC-20 tokens across liquidity pools. It uses the same constant-product pricing model popularized on Ethereum."}}, {"@type": "Question", "name": "How much slippage should I expect?", "acceptedAnswer": {"@type": "Answer", "text": "Slippage is negligible on a deep pair like TRX/USDT for ordinary trade sizes, but it rises on thin or exotic pairs and on trades that are large relative to the pool's reserves. Always check the price impact shown before confirming."}}, {"@type": "Question", "name": "Do I need an account to use a Tron Swap?", "acceptedAnswer": {"@type": "Answer", "text": "No. You connect a self-custody wallet such as TronLink and trade on-chain directly, with no sign-up and no custodian holding your funds at any point."}}, {"@type": "Question", "name": "Is a Tron Swap safe?", "acceptedAnswer": {"@type": "Answer", "text": "Using an audited, widely used contract and keeping your own keys removes custodial risk, but you still need to confirm the token contract address and keep approvals limited. No legitimate swap interface will ever ask for your seed phrase."}}]}]}</script>
 <style>
-:root {
-  color-scheme: dark;
-  --bg: #0a0e14;
-  --surface: #10161f; --panel: #131b26; --raised: #1a232f; --raised-2: #212c3a;
-  --line: rgba(255,255,255,.09); --line-2: rgba(255,255,255,.17);
-  --ink: #f3f7fc; --text: #c4cdd9; --muted: #8b97a6; --faint: #6b7686;
-  --accent: #ff060a; --accent-2: #cc0509; --accent-3: #ff4d50;
-  --accent-soft: rgba(255,6,10,.12); --accent-line: rgba(255,6,10,.35); --accent-glow: rgba(255,6,10,.45);
-  --warn: #f59e0b; --warn-soft: rgba(245,158,11,.10); --warn-line: rgba(245,158,11,.45);
-  --cta: #ff060a; --cta-2: #cc0509; --cta-ink: #ffffff;
-  --r-sm: 10px; --r-md: 14px; --r-lg: 16px; --r-xl: 22px;
-  --mono: ui-monospace, "SF Mono", SFMono-Regular, "Roboto Mono", Menlo, Consolas, monospace;
-  --font: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --ease: cubic-bezier(0.22, 0.7, 0.24, 1);
+:root{--bg:#110C18;--surface:#1B1324;--text:#EFE9F6;--muted:#998BA6;--accent:#A78BFA;--accent-ink:#160A22;--radius:11px;--display:"Lexend";--body:"Inter"}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-body { margin: 0; min-width: 320px; overflow-x: hidden; color: var(--text); background: var(--bg); background-image: radial-gradient(1100px 620px at 80% -8%, rgba(255,6,10,.10), transparent 60%), radial-gradient(900px 500px at 8% 4%, rgba(204,5,9,.06), transparent 55%); background-attachment: fixed; font-family: var(--font); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
-a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
-:focus-visible { outline: 2px solid var(--accent-3); outline-offset: 3px; border-radius: 10px; }
-.skip { position: absolute; left: -999px; }
-.skip:focus { left: 12px; top: 12px; z-index: 99; padding: 10px 16px; border-radius: 10px; background: var(--accent); color: var(--cta-ink); font-weight: 800; }
-.topbar { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; gap: 12px 20px; flex-wrap: wrap; padding: 12px clamp(16px, 4vw, 30px); background: rgba(10,14,20,.72); border-bottom: 1px solid var(--line); backdrop-filter: blur(12px) saturate(140%); -webkit-backdrop-filter: blur(12px) saturate(140%); }
-.topbar-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
-.topbar-logo { width: 40px; height: 40px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 11px; background: var(--raised); box-shadow: inset 0 0 0 1px var(--line-2); }
-.topbar-logo img { width: 24px; height: 24px; border-radius: 7px; }
-h1.wordmark { margin: 0; font-size: 18px; font-weight: 850; letter-spacing: -0.03em; color: var(--ink); line-height: 1; white-space: nowrap; }
-.wordmark .tld { color: var(--accent-3); }
-.topbar-right { display: flex; align-items: center; gap: 10px 18px; flex-wrap: wrap; }
-.ticker { display: flex; align-items: center; flex-wrap: wrap; gap: 3px 16px; min-width: 0; }
-.tick { display: inline-flex; align-items: center; gap: 6px; min-height: 32px; color: var(--faint); font-size: 11.5px; font-weight: 600; }
-.tick b { color: var(--muted); font-family: var(--mono); font-size: 12px; font-weight: 600; }
-.tick .ext { color: var(--faint); font-size: 10px; }
-.tick:hover { color: var(--muted); } .tick:hover b, .tick:hover .ext { color: var(--accent-3); }
-.nav-cta { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; padding: 0 18px; border-radius: 12px; background: var(--accent); color: var(--cta-ink); font-size: 13.5px; font-weight: 800; box-shadow: 0 6px 18px -6px var(--accent-glow); transition: transform .16s var(--ease), box-shadow .16s var(--ease), filter .16s var(--ease); }
-.nav-cta:hover { transform: translateY(-1px); filter: brightness(1.05); box-shadow: 0 12px 28px -8px var(--accent-glow); }
-.hero { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(28px, 4vw, 56px); align-items: center; width: min(1160px, 100%); margin: 0 auto; padding: clamp(34px, 7vh, 84px) clamp(16px, 4vw, 30px) clamp(30px, 5vh, 60px); }
-.hero-l { min-width: 0; }
-.eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 7px 13px; border: 1px solid var(--accent-line); border-radius: 999px; background: var(--accent-soft); color: var(--accent-3); font-size: 12px; font-weight: 750; }
-.eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-3); box-shadow: 0 0 0 4px var(--accent-soft); animation: pulse 2.4s var(--ease) infinite; }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.45} }
-@media (prefers-reduced-motion: reduce){ .eyebrow .dot{animation:none} }
-.hero-h { margin: 18px 0 0; font-size: clamp(2.15rem, 5.3vw, 3.7rem); line-height: 1.04; font-weight: 850; letter-spacing: -0.035em; color: var(--ink); }
-.hero-h .grad { background: linear-gradient(100deg, var(--accent-3), #fecaca 55%, var(--accent)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
-.hero-lead { margin: 18px 0 0; max-width: 50ch; font-size: 16.5px; line-height: 1.6; color: var(--text); }
-.hero-lead strong { color: var(--ink); font-weight: 700; }
-.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 26px 0 0; }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 52px; border-radius: 14px; font-weight: 800; font-size: 15.5px; cursor: pointer; border: 0; transition: transform .16s var(--ease), box-shadow .16s var(--ease), filter .16s var(--ease), border-color .16s var(--ease); }
-.btn-primary { padding: 0 26px; color: var(--cta-ink); background: linear-gradient(135deg, var(--accent-3), var(--accent) 55%, var(--accent-2)); box-shadow: 0 12px 30px -8px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,.35); }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 20px 46px -10px var(--accent-glow); filter: brightness(1.04); }
-.btn-primary .go { transition: transform .18s var(--ease); }
-.btn-primary:hover .go { transform: translate(2px,-2px); }
-.btn-ghost { padding: 0 22px; color: var(--ink); background: rgba(255,255,255,.03); border: 1px solid var(--line-2); }
-.btn-ghost:hover { border-color: var(--accent-line); color: var(--accent-3); }
-.trust { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 26px 0 0; }
-.trust-badge { display: flex; align-items: center; gap: 10px; padding: 12px 13px; border: 1px solid var(--line); border-radius: var(--r-md); background: rgba(255,255,255,.02); }
-.trust-badge .tb-ico { width: 30px; height: 30px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 9px; background: var(--accent-soft); box-shadow: inset 0 0 0 1px var(--accent-line); }
-.trust-badge .tb-ico svg { width: 16px; height: 16px; color: var(--accent-3); }
-.trust-badge b { display: block; color: var(--ink); font-size: 13px; font-weight: 750; line-height: 1.2; }
-.trust-badge span { display: block; color: var(--faint); font-size: 10.5px; font-weight: 600; margin-top: 2px; }
-@media (max-width: 720px){ .trust { grid-template-columns: 1fr 1fr; } }
-.swap-wrap { position: relative; }
-.swap-wrap::before { content:""; position:absolute; inset:-1px; border-radius: 26px; background: linear-gradient(160deg, var(--accent-line), transparent 45%); opacity:.7; z-index:0; }
-.swap-card { position: relative; z-index: 1; border: 1px solid var(--line-2); border-radius: 24px; background: linear-gradient(180deg, var(--panel), var(--surface)); padding: 18px; box-shadow: 0 40px 90px -34px rgba(0,0,0,.75); }
-.card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; padding: 0 2px; }
-.card-title { margin: 0; font-size: 15px; font-weight: 800; color: var(--ink); }
-.preview-tag { display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border: 1px solid var(--accent-line); border-radius: 999px; background: var(--accent-soft); color: var(--accent-3); font-size: 10px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
-.preview-tag > span { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-3); box-shadow: 0 0 0 3px var(--accent-soft); }
-.leg { border: 1px solid var(--line); border-radius: 16px; background: var(--bg); padding: 14px 15px; transition: border-color .16s var(--ease); }
-.leg:hover, .leg:focus-within { border-color: var(--line-2); }
-.leg-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-.leg-cap { font-size: 12px; font-weight: 650; color: var(--muted); }
-.leg-bal { font-size: 11.5px; color: var(--faint); font-weight: 600; }
-.leg-body { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.amount { font-family: var(--mono); font-size: 1.9rem; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); font-variant-numeric: tabular-nums; line-height: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
-.leg-body .amount.dim { color: var(--faint); }
-.asset { display: inline-flex; align-items: center; gap: 8px; flex: 0 0 auto; min-height: 44px; padding: 6px 12px 6px 6px; border: 1px solid var(--line-2); border-radius: 999px; background: var(--raised); color: var(--ink); font-size: 15px; font-weight: 800; cursor: pointer; transition: border-color .16s var(--ease), background-color .16s var(--ease); }
-.asset:hover { border-color: var(--accent-line); background: var(--raised-2); }
-.asset .tok { width: 28px; height: 28px; flex: 0 0 auto; border-radius: 50%; overflow: hidden; display: grid; place-items: center; background: #fff; box-shadow: 0 0 0 1px var(--line-2); }
-.asset .tok img { width: 28px; height: 28px; }
-.asset .chev-sm { width: 15px; height: 15px; color: var(--muted); }
-.swap-arrow { position: relative; z-index: 2; display: grid; place-items: center; width: 44px; height: 44px; margin: -14px auto; border: 4px solid var(--panel); border-radius: 14px; background: var(--raised); color: var(--accent-3); cursor: pointer; box-shadow: 0 0 0 1px var(--line-2); transition: transform 240ms var(--ease), background-color .16s var(--ease), color .16s var(--ease); }
-.swap-arrow svg { width: 18px; height: 18px; }
-.swap-arrow:hover { transform: rotate(180deg); background: var(--accent); color: var(--cta-ink); }
-.route-panel { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px; padding: 13px 15px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.02); }
-.route-info b { display: block; color: var(--ink); font-size: 13.5px; font-weight: 750; }
-.route-info span { display: block; margin-top: 2px; color: var(--faint); font-size: 11.5px; }
-.route-tok { display: inline-flex; align-items: center; gap: 7px; color: var(--text); font-size: 13px; font-weight: 700; white-space: nowrap; }
-.route-tok .tok { width: 22px; height: 22px; border-radius: 50%; overflow: hidden; background: #fff; display: grid; place-items: center; box-shadow: 0 0 0 1px var(--line-2); }
-.route-tok .tok img { width: 22px; height: 22px; }
-.route-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 4px 2px; border-top: 1px solid var(--line); margin-top: 10px; }
-.route-row span { font-size: 10.5px; font-weight: 750; letter-spacing: 0.07em; text-transform: uppercase; color: var(--faint); }
-.route-row b { color: var(--text); font-size: 12.5px; font-weight: 700; font-variant-numeric: tabular-nums; }
-.swap-cta { display: flex; align-items: center; justify-content: center; gap: 9px; margin-top: 16px; min-height: 54px; border-radius: 15px; color: var(--cta-ink); background: linear-gradient(135deg, var(--accent-3), var(--accent) 55%, var(--accent-2)); font-size: 16.5px; font-weight: 850; box-shadow: 0 16px 34px -12px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,.35); transition: filter 150ms var(--ease), transform 150ms var(--ease), box-shadow .16s var(--ease); }
-.swap-cta:hover { filter: brightness(1.05); transform: translateY(-2px); box-shadow: 0 22px 50px -12px var(--accent-glow); }
-.swap-cta .cta-go { transition: transform 0.18s var(--ease); }
-.swap-cta:hover .cta-go { transform: translateX(3px); }
-.swap-foot { text-align: center; margin: 12px 2px 0; font-size: 11px; color: var(--faint); }
-@media (max-width: 900px){ .hero { grid-template-columns: 1fr; gap: 30px; } .swap-wrap { max-width: 460px; margin: 0 auto; width: 100%; } }
-.content { width: min(1160px, 100%); margin: 0 auto; padding: clamp(30px, 5vh, 60px) clamp(16px, 4vw, 30px) 80px; }
-.section-intro { max-width: 760px; margin: 0 auto clamp(22px, 4vh, 40px); }
-.section-intro p { margin: 0 0 14px; font-size: 16px; line-height: 1.7; color: var(--text); }
-.section-intro p strong { color: var(--ink); font-weight: 700; }
-.docs { display: grid; grid-template-columns: 236px minmax(0,1fr); gap: clamp(26px, 4vw, 56px); align-items: start; }
-.toc { position: sticky; top: 76px; align-self: start; max-height: calc(100dvh - 100px); overflow: auto; }
-.toc-h { margin: 0 0 10px; font-size: 10.5px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); padding-left: 13px; }
-.toc a { display: block; min-height: 34px; padding: 8px 13px; border-left: 2px solid var(--line); color: var(--muted); font-size: 13px; font-weight: 650; line-height: 1.3; transition: color .15s var(--ease), border-color .15s var(--ease); }
-.toc a:hover { color: var(--ink); }
-.toc a.active { color: var(--accent-3); border-left-color: var(--accent); font-weight: 800; }
-.doc-main { min-width: 0; }
-.sec { border: 1px solid var(--line); border-radius: 18px; background: var(--panel); margin: 0 0 14px; scroll-margin-top: 82px; box-shadow: 0 1px 3px rgba(0,0,0,.3); transition: box-shadow .24s var(--ease), border-color .24s var(--ease); }
-.sec:hover { border-color: var(--line-2); }
-.sec[open] { border-color: var(--accent-line); box-shadow: 0 20px 50px -24px rgba(255,6,10,.28); }
-.sec > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 60px; padding: clamp(16px,2.5vh,22px) clamp(16px,3vw,24px); border-radius: 18px; transition: background-color .16s var(--ease); }
-.sec > summary:hover { background: rgba(255,255,255,.03); }
-.sec > summary::-webkit-details-marker { display: none; }
-.sec > summary h2 { margin: 0; font-size: clamp(1.08rem,2.4vw,1.35rem); font-weight: 800; letter-spacing: -0.02em; color: var(--ink); }
-.chev { flex: 0 0 auto; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line-2); background: var(--raised); color: var(--accent-3); transition: transform .28s var(--ease), background-color .2s var(--ease), border-color .2s var(--ease); }
-.chev svg { width: 18px; height: 18px; }
-.sec[open] > summary .chev { transform: rotate(180deg); background: var(--accent-soft); border-color: var(--accent-line); }
-.sec-body { padding: 0 clamp(16px,3vw,24px) clamp(18px,3vh,26px); max-width: 74ch; }
-.sec[open] .sec-body { animation: drop .22s var(--ease); }
-@keyframes drop { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
-@media (prefers-reduced-motion: reduce){ .sec[open] .sec-body { animation: none; } .chev { transition: none; } }
-.sec-body p { margin: 0 0 13px; color: var(--text); }
-.sec-body p:last-child { margin-bottom: 0; }
-.sec-body strong { color: var(--ink); font-weight: 700; }
-.sec-body ul { margin: 0 0 4px; padding-left: 20px; }
-.sec-body li { margin-bottom: 8px; color: var(--text); }
-.sec-body li::marker { color: var(--accent-3); }
-.sec-body a { color: var(--accent-3); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: var(--accent-line); transition: color .15s var(--ease); }
-.sec-body a:hover { color: var(--accent); }
-.addr { font-family: var(--mono); font-size: 12.5px; color: var(--accent-3); word-break: break-all; }
-.notice { border: 1px solid var(--line); border-left: 4px solid var(--warn); border-radius: 14px; background: var(--warn-soft); margin: 0 0 12px; overflow: hidden; }
-.notice > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 14px 16px; }
-.notice > summary::-webkit-details-marker { display: none; }
-.notice .n-ico { width: 26px; height: 26px; flex: 0 0 auto; display: grid; place-items: center; color: var(--warn); }
-.notice .n-ico svg { width: 20px; height: 20px; }
-.notice .n-title { flex: 1 1 auto; color: var(--ink); font-weight: 750; font-size: 14.5px; }
-.notice .chev-w { flex: 0 0 auto; width: 30px; height: 30px; display: grid; place-items: center; color: var(--warn); transition: transform .26s var(--ease); }
-.notice .chev-w svg { width: 17px; height: 17px; }
-.notice[open] .chev-w { transform: rotate(180deg); }
-.notice .n-body { padding: 0 16px 16px 54px; color: var(--text); font-size: 13.5px; line-height: 1.66; }
-.notice .n-body strong { color: var(--ink); }
-@media (max-width: 560px){ .notice .n-body { padding-left: 16px; } }
-.qa { border: 1px solid var(--line); border-radius: 14px; background: var(--panel); margin: 0 0 10px; overflow: hidden; transition: border-color .18s var(--ease); }
-.qa:hover { border-color: var(--line-2); }
-.qa[open] { border-color: var(--accent-line); }
-.qa > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 56px; padding: 15px 18px; color: var(--ink); font-weight: 700; font-size: 14.5px; transition: background-color .16s var(--ease); }
-.qa > summary:hover { background: rgba(255,255,255,.03); }
-.qa > summary::-webkit-details-marker { display: none; }
-.qa .chev-q { flex: 0 0 auto; width: 26px; height: 26px; display: grid; place-items: center; color: var(--accent-3); transition: transform .24s var(--ease); }
-.qa .chev-q svg { width: 17px; height: 17px; }
-.qa[open] .chev-q { transform: rotate(180deg); }
-.qa .a { padding: 0 18px 16px; color: var(--text); font-size: 13.5px; line-height: 1.66; }
-.qa .a a { color: var(--accent-3); text-decoration: underline; text-underline-offset: 3px; }
-.field-notes { border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 16px; background: var(--panel); padding: clamp(20px,3vh,26px) clamp(18px,3vw,26px); margin: 16px 0 0; scroll-margin-top: 82px; }
-.field-notes h2 { margin: 0 0 12px; font-size: clamp(1.08rem,2.4vw,1.35rem); font-weight: 800; letter-spacing: -.02em; color: var(--ink); }
-.field-notes .fn-body { color: var(--text); font-size: 14px; line-height: 1.68; max-width: 74ch; }
-.field-notes .fn-body strong { color: var(--ink); font-weight: 700; }
-.field-notes .fn-body ul { margin: 8px 0; padding-left: 20px; }
-.field-notes .fn-body li { margin-bottom: 6px; }
-@media (max-width: 900px){
-  .docs { grid-template-columns: 1fr; gap: 0; }
-  .toc { position: sticky; top: 55px; z-index: 20; display: flex; gap: 8px; overflow-x: auto; max-height: none; background: rgba(10,14,20,.82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 10px 2px; margin: 0 0 14px; border-bottom: 1px solid var(--line); }
-  .toc-h { display: none; }
-  .toc a { flex: 0 0 auto; white-space: nowrap; border-left: 0; border: 1px solid var(--line); border-radius: 999px; padding: 9px 15px; font-size: 12.5px; min-height: 40px; display: flex; align-items: center; }
-  .toc a.active { color: var(--accent-3); border-color: var(--accent); background: var(--accent-soft); }
+html {
+  min-width: 280px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
 }
-.site-foot { width: min(1160px, 100%); margin: 0 auto; padding: 26px clamp(16px,4vw,30px) 48px; border-top: 1px solid var(--line); color: var(--faint); font-size: 12.5px; line-height: 1.65; }
-.site-foot .wrap { max-width: 88ch; }
-.site-foot a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
-.site-foot a:hover { color: var(--accent-3); }
-html.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
-html.js .reveal.in { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce){ html.js .reveal { opacity: 1; transform: none; transition: none; } }
-@media (max-width: 560px){ .ticker { display: none; } .amount { font-size: 1.6rem; } .hero { padding-top: 26px; } }
+body {
+  margin: 0;
+  color: var(--text);
+  background: radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--accent) 9%, transparent), transparent 42rem), var(--bg);
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+  -webkit-font-smoothing: antialiased;
+}
+::selection {
+  color: var(--accent-ink);
+  background: var(--accent);
+}
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  transition: color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+a:hover {
+  color: color-mix(in srgb, var(--accent) 76%, var(--text));
+}
+a:focus-visible,
+input:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 5px;
+}
+img,
+svg {
+  max-width: 100%;
+  vertical-align: middle;
+}
+img {
+  height: auto;
+}
+input,
+output {
+  font-family: var(--body);
+}
+h1,
+h2,
+h3,
+h4 {
+  color: var(--text);
+  font-family: var(--display);
+  text-wrap: balance;
+}
+p,
+ul,
+ol,
+blockquote,
+figure {
+  margin: 0;
+}
+.c8eb9dd {
+  width: min(100% - 4rem, 1120px);
+  margin-inline: auto;
+}
+.c0d803f {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 92px;
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
+}
+.cd2ac5c {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--text);
+  font-family: var(--display);
+  font-size: 1.2rem;
+  font-weight: 750;
+  letter-spacing: -0.045em;
+}
+.c7958f4 {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--accent) 23%, transparent);
+  border-radius: calc(var(--radius) * 0.55);
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+  font-size: 1.4rem;
+  line-height: 1;
+}
+.cdb1922 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  min-height: 42px;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid color-mix(in srgb, var(--text) 14%, transparent);
+  border-radius: calc(var(--radius) * 0.65);
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
+  font-size: 0.85rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+.cdb1922:hover {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+}
+.c5973f5 {
+  padding-block: 1.4rem 0.5rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+.c3b0492 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.7rem;
+  margin: 0;
+  padding: 0;
+  color: var(--muted);
+  list-style: none;
+}
+.c3b0492 ol,
+.c3b0492 ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.c3b0492 li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.c3b0492 li + li::before {
+  content: "/";
+  color: color-mix(in srgb, var(--muted) 60%, transparent);
+}
+.c3b0492 a {
+  color: var(--muted);
+  text-decoration: none;
+}
+.c3b0492 a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+.c3b0492 [aria-current="page"] {
+  color: var(--text);
+}
+.cb649af {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: clamp(2.5rem, 6vw, 5rem);
+  text-align: center;
+}
+.c462f43 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 1.25rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+  border-radius: calc(var(--radius) * 2);
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 6%, var(--surface));
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.c462f43::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 10%, transparent);
+}
+.cb649af h1 {
+  max-width: 960px;
+  margin: 0;
+  font-size: clamp(2.6rem, 6.1vw, 5.2rem);
+  font-weight: 650;
+  line-height: 1.06;
+  letter-spacing: -0.06em;
+}
+.cb649af h1 em,
+.cb649af h1 strong,
+.cb649af h1 span {
+  color: var(--accent);
+}
+.cb649af h1 em {
+  font-style: normal;
+}
+.c9e7101 {
+  max-width: 720px;
+  margin: 1.5rem auto 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.65vw, 1.15rem);
+  line-height: 1.85;
+  text-wrap: pretty;
+}
+.cfb2e0a {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  margin-top: clamp(2rem, 4vw, 3.2rem);
+  padding: clamp(1.2rem, 3.5vw, 2.6rem);
+  border: 1px solid color-mix(in srgb, var(--accent) 19%, var(--surface));
+  border-radius: var(--radius);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 5%, var(--surface)), var(--surface) 48%);
+  box-shadow: 0 24px 65px -24px color-mix(in srgb, var(--text) 21%, transparent), 0 4px 14px -7px color-mix(in srgb, var(--accent) 16%, transparent);
+  text-align: left;
+}
+.cfb2e0a::before {
+  position: absolute;
+  inset: -1px 12% auto;
+  height: 2px;
+  content: "";
+  background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 0%, transparent), color-mix(in srgb, var(--accent) 65%, transparent), color-mix(in srgb, var(--accent) 0%, transparent));
+}
+.cb6d3ca {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem 1rem;
+  margin-bottom: 1.5rem;
+}
+.cb6d3ca h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 650;
+  letter-spacing: -0.035em;
+}
+.cb6d3ca p {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+.c79f012 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: stretch;
+  gap: 1rem;
+}
+.c90a4f8 {
+  min-width: 0;
+  padding: 1.4rem 1.5rem 1.1rem;
+  border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+  border-radius: calc(var(--radius) * 0.7);
+  background: color-mix(in srgb, var(--bg) 65%, var(--surface));
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.c90a4f8:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 9%, transparent);
+}
+.c85d751 {
+  border-color: color-mix(in srgb, var(--accent) 18%, transparent);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 8%, var(--surface)), color-mix(in srgb, var(--accent) 3%, var(--surface)));
+}
+.c81b85a {
+  display: block;
+  margin-bottom: 0.65rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 550;
+}
+#amount {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface) 0%, transparent);
+  font-family: var(--body);
+  font-size: clamp(1.7rem, 3vw, 2.65rem);
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.3;
+  letter-spacing: -0.045em;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+#amount::-webkit-inner-spin-button,
+#amount::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+#amount::placeholder {
+  color: var(--muted);
+  opacity: 0.65;
+}
+#amount:focus-visible {
+  outline-offset: 3px;
+  outline-width: 2px;
+}
+#amount[aria-invalid="true"] {
+  text-decoration: underline wavy;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+#received {
+  display: block;
+  min-height: 1.3em;
+  color: var(--text);
+  font-size: clamp(1.7rem, 3vw, 2.65rem);
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.3;
+  letter-spacing: -0.045em;
+  overflow-wrap: anywhere;
+}
+.c3c75ff {
+  display: block;
+  margin-top: 0.6rem;
+  color: var(--muted);
+  font-size: 0.73rem;
+  line-height: 1.5;
+}
+.c9d7d20 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-inline: 0.15rem;
+}
+.cefe432 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  width: 48px;
+  min-height: 48px;
+  padding: 0.4rem;
+  border: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
+  border-radius: calc(var(--radius) * 0.55);
+  background: var(--surface);
+  box-shadow: 0 4px 10px color-mix(in srgb, var(--text) 4%, transparent);
+  font-size: 0.65rem;
+  line-height: 1.2;
+  text-align: center;
+}
+.cefe432 img,
+.cefe432 svg {
+  display: block;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+.c8f7148 {
+  color: var(--accent);
+  font-size: 1.3rem;
+}
+.c1d5c73 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.55fr);
+  align-items: center;
+  gap: 1.5rem 2.5rem;
+  margin-top: 1.4rem;
+}
+.c49b61a {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  font-size: 0.8rem;
+}
+.c49b61a > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.c49b61a dt {
+  color: var(--muted);
+}
+.c49b61a dd {
+  margin: 0;
+  color: var(--text);
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.c0a993d {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 56px;
+  padding: 0.9rem 1.3rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 85%, var(--text));
+  border-radius: calc(var(--radius) * 0.65);
+  color: var(--accent-ink);
+  background: linear-gradient(120deg, var(--accent), color-mix(in srgb, var(--accent) 85%, var(--text)));
+  box-shadow: 0 8px 22px -8px color-mix(in srgb, var(--accent) 45%, transparent);
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+.c0a993d:hover {
+  transform: translateY(-2px);
+  color: var(--accent-ink);
+  background: linear-gradient(120deg, color-mix(in srgb, var(--accent) 94%, var(--text)), color-mix(in srgb, var(--accent) 78%, var(--text)));
+  box-shadow: 0 12px 28px -9px color-mix(in srgb, var(--accent) 50%, transparent);
+}
+.c0a993d:active {
+  transform: translateY(0);
+}
+.c0a993d span:last-child {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+.cf493e2 {
+  min-height: 1.5em;
+  margin-top: 0.8rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+.cf493e2[data-invalid="true"] {
+  color: var(--text);
+  font-weight: 600;
+}
+.c20ad58 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin-block: 1.6rem 4.5rem;
+  padding: 1rem 0;
+  border-block: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+  list-style: none;
+}
+.c20ad58 li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.75rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-align: center;
+}
+.c20ad58 li + li {
+  border-left: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
+}
+.c20ad58 li::before {
+  content: "✓";
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 650;
+}
+.c44db90 {
+  margin-bottom: 4rem;
+  padding: clamp(1.25rem, 3.5vw, 2.75rem);
+  border: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 12px 35px -22px color-mix(in srgb, var(--text) 18%, transparent);
+}
+.ce678f7 {
+  margin: 0 0 1.6rem;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.045em;
+}
+.c66c48b {
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+.c31c342 {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--text);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  text-align: left;
+}
+.c31c342 caption {
+  margin-bottom: 1rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: left;
+}
+.c31c342 th,
+.c31c342 td {
+  padding: 1.05rem 1.2rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+  vertical-align: top;
+}
+.c31c342 th {
+  width: 31%;
+  color: var(--muted);
+  font-weight: 500;
+}
+.c31c342 td {
+  font-weight: 550;
+}
+.c31c342 tr:nth-child(odd) {
+  background: color-mix(in srgb, var(--accent) 3%, var(--surface));
+}
+.c31c342 tr:last-child > * {
+  border-bottom: 0;
+}
+.c31c342 thead th {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+  font-weight: 650;
+}
+.c005d39 {
+  width: min(100%, 860px);
+  margin-inline: auto;
+}
+.c65478d {
+  margin-block: 0 3.6rem;
+  padding-bottom: 3.2rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
+  scroll-margin-top: 2rem;
+}
+.cb814ff {
+  margin: 0 0 1.25rem;
+  color: var(--text);
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.045em;
+}
+.ce9704f {
+  color: var(--muted);
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.85;
+}
+.ce9704f > * + * {
+  margin-top: 1.25rem;
+}
+.ce9704f h3,
+.ce9704f h4 {
+  margin-block: 2rem 0.75rem;
+  color: var(--text);
+  font-family: var(--display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+}
+.ce9704f h4 {
+  font-size: 1.1rem;
+}
+.ce9704f strong,
+.cd8021e strong {
+  color: var(--text);
+  font-weight: 650;
+}
+.ce9704f ul,
+.ce9704f ol,
+.cd8021e ul,
+.cd8021e ol {
+  padding-left: 1.4rem;
+}
+.ce9704f li,
+.cd8021e li {
+  padding-left: 0.3rem;
+}
+.ce9704f li + li,
+.cd8021e li + li {
+  margin-top: 0.65rem;
+}
+.ce9704f li::marker,
+.cd8021e li::marker {
+  color: var(--accent);
+}
+.ce9704f li > ul,
+.ce9704f li > ol {
+  margin-top: 0.65rem;
+}
+.ce9704f blockquote {
+  padding: 1.25rem 1.5rem;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 calc(var(--radius) * 0.45) calc(var(--radius) * 0.45) 0;
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 6%, var(--surface));
+}
+.ce9704f blockquote p + p {
+  margin-top: 0.8rem;
+}
+.ce9704f table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  border: 1px solid color-mix(in srgb, var(--text) 12%, transparent);
+  border-radius: calc(var(--radius) * 0.6);
+  background: var(--surface);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  text-align: left;
+  overscroll-behavior-inline: contain;
+}
+.ce9704f table th,
+.ce9704f table td {
+  min-width: 8rem;
+  padding: 0.95rem 1.15rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--text) 9%, transparent);
+  vertical-align: top;
+}
+.ce9704f table th {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+  font-weight: 600;
+}
+.ce9704f table tbody tr:nth-child(even) {
+  background: color-mix(in srgb, var(--bg) 65%, var(--surface));
+}
+.ce9704f table tr:last-child td {
+  border-bottom: 0;
+}
+.ce9704f table caption {
+  padding: 0.85rem 1.15rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-align: left;
+}
+.ce9704f code,
+.ce9704f pre {
+  border-radius: calc(var(--radius) * 0.3);
+  color: var(--text);
+  background: color-mix(in srgb, var(--text) 5%, var(--surface));
+  font-family: var(--body);
+  font-size: 0.9em;
+}
+.ce9704f code {
+  padding: 0.15em 0.4em;
+}
+.ce9704f pre {
+  overflow-x: auto;
+  padding: 1.2rem;
+}
+.ce9704f pre code {
+  padding: 0;
+  background: color-mix(in srgb, var(--surface) 0%, transparent);
+}
+.ce9704f figure img {
+  display: block;
+  border-radius: calc(var(--radius) * 0.7);
+}
+.ce9704f figcaption {
+  margin-top: 0.7rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.cc3255b {
+  margin-block: 1rem;
+  border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+  border-radius: calc(var(--radius) * 0.7);
+  background: var(--surface);
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+.cc3255b:hover {
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+.cc3255b[open] {
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+  box-shadow: 0 8px 25px -14px color-mix(in srgb, var(--text) 15%, transparent);
+}
+.c7c40e0 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.3rem 1.5rem;
+  border-radius: calc(var(--radius) * 0.7);
+  color: var(--text);
+  font-family: var(--display);
+  font-size: 1.04rem;
+  font-weight: 550;
+  line-height: 1.5;
+  list-style: none;
+  cursor: pointer;
+}
+.c7c40e0::-webkit-details-marker {
+  display: none;
+}
+.c7c40e0::after {
+  display: grid;
+  flex: 0 0 27px;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  content: "+";
+  border-radius: 50%;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 9%, var(--surface));
+  font-family: var(--body);
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1;
+}
+.cc3255b[open] > .c7c40e0::after {
+  content: "−";
+}
+.cd8021e {
+  padding: 0 1.5rem 1.5rem;
+  color: var(--muted);
+  font-family: var(--body);
+  font-size: 0.95rem;
+  line-height: 1.85;
+}
+.cd8021e > * + * {
+  margin-top: 1rem;
+}
+.c394930 {
+  margin-top: 4rem;
+  padding: 2.2rem 0 2.5rem;
+  border-top: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+}
+.c394930 .ce678f7 {
+  margin-bottom: 1.2rem;
+  font-size: 1.35rem;
+}
+.c71c518 {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cc0dd8a {
+  min-width: 0;
+  padding: 0.8rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--text) 8%, transparent);
+  border-radius: calc(var(--radius) * 0.45);
+  color: var(--muted);
+  background: color-mix(in srgb, var(--surface) 70%, var(--bg));
+  font-size: 0.82rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.cc0dd8a a,
+a.cc0dd8a {
+  color: var(--text);
+  text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.cc0dd8a a:hover,
+a.cc0dd8a:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+.c62d964 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-top: 1rem;
+  padding-block: 1.7rem 2.2rem;
+  border-top: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+.c5af85f {
+  color: var(--text);
+  font-family: var(--display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+.c6a22c1 span {
+  color: var(--text);
+}
+@media (min-width: 1280px) {
+  .cb649af {
+    padding-top: 5.2rem;
+  }
+  .cfb2e0a {
+    margin-top: 3.4rem;
+  }
+  .c90a4f8 {
+    padding-block: 1.6rem 1.3rem;
+  }
+}
+@media (max-width: 900px) {
+  .c8eb9dd {
+    width: min(100% - 3rem, 1120px);
+  }
+  .c79f012 {
+    gap: 0.65rem;
+  }
+  .c90a4f8 {
+    padding: 1.1rem;
+  }
+  .c9d7d20 {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .cefe432 {
+    width: 38px;
+    min-height: 38px;
+  }
+  .cefe432 img,
+  .cefe432 svg {
+    width: 25px;
+    height: 25px;
+  }
+  .c8f7148 {
+    line-height: 1;
+  }
+  .c20ad58 {
+    margin-bottom: 3rem;
+  }
+}
+@media (max-width: 640px) {
+  html {
+    scroll-padding-top: 1rem;
+  }
+  .c8eb9dd {
+    width: calc(100% - 2rem);
+  }
+  .c0d803f {
+    min-height: 76px;
+    gap: 0.75rem;
+  }
+  .cd2ac5c {
+    gap: 0.5rem;
+    font-size: 1.08rem;
+  }
+  .cdb1922 {
+    min-height: 40px;
+    padding: 0.45rem 0.8rem;
+    font-size: 0.78rem;
+  }
+  .c5973f5 {
+    padding-top: 1rem;
+  }
+  .cb649af {
+    padding-top: 2.4rem;
+  }
+  .cb649af h1 {
+    font-size: clamp(2.25rem, 10vw, 3.6rem);
+    letter-spacing: -0.05em;
+  }
+  .c9e7101 {
+    margin-top: 1.1rem;
+    line-height: 1.75;
+  }
+  .cfb2e0a {
+    padding: 1.1rem;
+  }
+  .cb6d3ca {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-bottom: 1.1rem;
+  }
+  .c79f012 {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.7rem;
+  }
+  .c90a4f8 {
+    padding: 1.2rem;
+  }
+  #amount,
+  #received {
+    font-size: clamp(1.8rem, 8vw, 2.6rem);
+  }
+  .c9d7d20 {
+    flex-direction: row;
+    gap: 0.8rem;
+    padding-block: 0.1rem;
+  }
+  .cefe432 {
+    width: 40px;
+    min-height: 40px;
+  }
+  .c1d5c73 {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+  }
+  .c49b61a {
+    font-size: 0.78rem;
+  }
+  .c0a993d {
+    min-height: 54px;
+  }
+  .c20ad58 {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    margin-block: 1.4rem 2.6rem;
+    padding-block: 0.5rem;
+  }
+  .c20ad58 li {
+    justify-content: flex-start;
+    padding: 0.7rem 1rem;
+  }
+  .c20ad58 li + li {
+    border-top: 1px solid color-mix(in srgb, var(--text) 6%, transparent);
+    border-left: 0;
+  }
+  .c44db90 {
+    margin-bottom: 2.8rem;
+    padding: 1.2rem;
+  }
+  .ce678f7 {
+    margin-bottom: 1.2rem;
+  }
+  .c31c342 {
+    font-size: 0.82rem;
+  }
+  .c31c342 th,
+  .c31c342 td {
+    padding: 0.8rem 0.6rem;
+  }
+  .c31c342 th {
+    width: 38%;
+  }
+  .c65478d {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.3rem;
+  }
+  .ce9704f {
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+  .ce9704f h3 {
+    font-size: 1.2rem;
+  }
+  .ce9704f blockquote {
+    padding: 1rem 1.15rem;
+  }
+  .c7c40e0 {
+    gap: 0.9rem;
+    padding: 1.1rem;
+    font-size: 0.98rem;
+  }
+  .cd8021e {
+    padding: 0 1.1rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  .c394930 {
+    margin-top: 2.6rem;
+    padding-block: 1.8rem;
+  }
+  .c62d964 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.45rem;
+    padding-block: 1.4rem 1.8rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none;
+    animation: none;
+  }
+  .c0a993d:hover {
+    transform: none;
+  }
+}
+@media print {
+  body {
+    background: var(--bg);
+  }
+  .c8eb9dd,
+  .c005d39 {
+    width: 100%;
+  }
+  .cdb1922,
+  .c0a993d {
+    display: none;
+  }
+  .cb649af {
+    padding-top: 1.5rem;
+  }
+  .cb649af h1 {
+    font-size: 2.6rem;
+  }
+  .cfb2e0a,
+  .c44db90,
+  .cc3255b {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+  .ce9704f h3,
+  .cb814ff {
+    break-after: avoid;
+  }
+  .ce9704f table {
+    display: table;
+    overflow: visible;
+  }
+}
 </style>
-<meta content="website" property="og:type"/><meta content="https://swap-tron.github.io/" property="og:url"/>
-<meta content="Swap Tron — Swap Tokens on TRON" property="og:title"/>
-<meta content="Trade TRX, USDT and TRC-20 tokens on the TRON network through a non-custodial decentralized exchange. Independent, not affiliated with TRON." property="og:description"/>
-<meta content="Swap Tron" property="og:site_name"/><meta content="https://swap-tron.github.io/trx.png" property="og:image"/>
-<meta content="summary_large_image" name="twitter:card"/><meta content="Swap Tron — Swap Tokens on TRON" name="twitter:title"/>
-<meta content="Trade TRX, USDT and TRC-20 tokens on TRON through a non-custodial DEX. Not affiliated with TRON." name="twitter:image"/>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://swap-tron.github.io/#website","url":"https://swap-tron.github.io/","name":"Swap Tron","inLanguage":"en"},{"@type":"WebPage","@id":"https://swap-tron.github.io/#webpage","url":"https://swap-tron.github.io/","name":"Swap Tron — Swap Tokens on TRON","description":"Trade TRX, USDT and TRC-20 tokens on the TRON network through a non-custodial decentralized exchange. Independent, not affiliated with TRON.","isPartOf":{"@id":"https://swap-tron.github.io/#website"},"inLanguage":"en","dateModified":"2026-08-24"},{"@type":"FAQPage","@id":"https://swap-tron.github.io/#faq","mainEntity":[{"@type":"Question","name":"What does it mean to swap on TRON?","acceptedAnswer":{"@type":"Answer","text":"Swapping on TRON means exchanging one TRON token for another — for example TRX for USDT — through an on-chain decentralized exchange such as a SunSwap-style DEX. This is an independent dashboard and is not affiliated with TRON; live quotes and settlement happen in the external app."}},{"@type":"Question","name":"What is the TRON network?","acceptedAnswer":{"@type":"Answer","text":"TRON is a layer-1 blockchain whose native coin is TRX. Tokens issued on it follow the TRC-20 standard, and USDT on TRON (TRC-20) is one of the most widely used stablecoin transfers. TRON uses its own wallets rather than Ethereum's MetaMask."}},{"@type":"Question","name":"How do I swap tokens on TRON?","acceptedAnswer":{"@type":"Answer","text":"Connect a TRON wallet such as TronLink, pick the input and output tokens, enter an amount, review the DEX route, expected output and minimum received, and sign. Swaps are non-custodial and settle through on-chain smart contracts on TRON."}},{"@type":"Question","name":"What are energy and bandwidth on TRON?","acceptedAnswer":{"@type":"Answer","text":"TRON meters transactions with bandwidth and energy rather than a simple gas fee. Bandwidth covers basic transfers, and energy covers smart-contract execution such as swaps. You can burn TRX to pay for them or stake TRX to obtain energy and bandwidth."}},{"@type":"Question","name":"What does a swap on TRON cost?","acceptedAnswer":{"@type":"Answer","text":"The cost is the resources consumed — bandwidth and energy, paid by burning TRX or covered by staked resources — plus the DEX pool fee and price impact from available liquidity. Interacting with a TRC-20 token can require a one-time approval. Compare expected output and minimum received before signing."}},{"@type":"Question","name":"Do I need TRX to swap on TRON?","acceptedAnswer":{"@type":"Answer","text":"Yes. TRON transactions consume bandwidth and energy, which you pay by burning TRX or by staking TRX for resources, so you need a small TRX balance to swap even when trading other tokens like USDT."}}]}]}
-</script>
-<link href="dashboard/index.html" rel="prefetch"/></head>
+</head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="topbar">
-<div class="topbar-left">
-<span class="topbar-logo"><img alt="Swap Tron" height="24" src="trx.png" width="24"/></span>
-<h1 class="wordmark">Swap<span class="tld"> Tron</span></h1>
+<div class="c8eb9dd">
+  <header class="c0d803f">
+    <div class="cd2ac5c"><span class="c7958f4" aria-hidden="true">⇄</span><span>Exchange</span></div>
+    <a class="cdb1922" href="dashboard/">Open app <span aria-hidden="true">↗</span></a>
+  </header>
+  <div class="c5973f5"><nav class="c3b0492" aria-label="Breadcrumb"><a href="dashboard/">Home</a> <span>/</span> <span>Swaps</span> <span>/</span> <span>Tron Swap</span></nav></div>
+  <section class="cb649af" aria-labelledby="hero-title">
+    <div class="c462f43">A direct route to your next asset</div>
+    <h1 id="hero-title">Tron <em>Swap</em>.</h1>
+    <p class="c9e7101">A Tron Swap exchanges TRX, USDT and other TRC-20 tokens directly on the TRON network, using an on-chain decentralized exchange instead of a centralized order book. You pick the pair, review the quoted rate and the minimum amount you will receive before you sign, and the trade settles in seconds because TRON confirms blocks quickly and prices activity in Energy and Bandwidth rather than a fluctuating gas auction. Your tokens never leave your own wallet.</p>
+    <div class="cfb2e0a" role="group" aria-labelledby="exchange-title">
+      <div class="cb6d3ca">
+        <h2 id="exchange-title">Your exchange</h2>
+        <p>One route. Every detail in view.</p>
+      </div>
+      <div class="c79f012">
+        <div class="c90a4f8">
+          <label class="c81b85a" for="amount">You pay</label>
+          <input id="amount" name="amount" type="number" inputmode="decimal" min="1" max="1000000" step="any" value="1000" required aria-describedby="amount-help amount-message" aria-invalid="false">
+          <span class="c3c75ff" id="amount-help">From 1 to 1,000,000 units</span>
+        </div>
+        <div class="c9d7d20" role="group" aria-label="Exchange route">
+          <span class="cefe432"><img src="assets/tokens/trx.svg" alt="TRON" width="28" height="28"></span>
+          <span class="c8f7148" role="img" aria-label="to">→</span>
+          <span class="cefe432"><img src="assets/tokens/usdt.svg" alt="Tether" width="28" height="28"></span>
+        </div>
+        <div class="c90a4f8 c85d751">
+          <label class="c81b85a" for="received">You receive</label>
+          <output id="received" for="amount" aria-live="polite" aria-atomic="true">—</output>
+          <span class="c3c75ff">After network fee · destination units</span>
+        </div>
+      </div>
+      <div class="c1d5c73">
+        <dl class="c49b61a">
+          <div><dt>Rate</dt><dd><output id="rate" for="amount">—</output></dd></div>
+          <div><dt>Network fee</dt><dd><output id="network-fee" for="amount">—</output></dd></div>
+        </dl>
+        <a class="c0a993d" href="dashboard/"><span>Continue to exchange</span><span aria-hidden="true">→</span></a>
+      </div>
+      <p class="cf493e2" id="amount-message" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+  <ul class="c20ad58" aria-label="Exchange features">
+    <li>Non-custodial</li>
+    <li>On-chain</li>
+    <li>No sign-up</li>
+    <li>Transparent fees</li>
+  </ul>
+  <section class="c44db90" aria-labelledby="facts-title">
+    <h2 class="ce678f7" id="facts-title">Key facts</h2>
+    <div class="c66c48b" tabindex="0" role="region" aria-label="Key facts table"><table class="c31c342"><tbody><tr><th scope="row">Network</th><td>TRON — high-throughput, low-fee blockchain</td></tr>
+<tr><th scope="row">Primary pair</th><td>TRX / USDT (TRC-20)</td></tr>
+<tr><th scope="row">Gas model</th><td>Energy and Bandwidth, not ETH-style gas</td></tr>
+<tr><th scope="row">Typical fee</th><td>Fractions of a cent per trade</td></tr>
+<tr><th scope="row">Settlement time</th><td>Seconds, after block confirmation</td></tr>
+<tr><th scope="row">Custody</th><td>Self-custody — you hold your keys</td></tr></tbody></table></div>
+  </section>
+  <main class="c005d39" id="content">
+    <section class="c65478d"><h2 class="cb814ff">What a Tron Swap Is</h2><div class="ce9704f"><strong>A Tron Swap is a token trade executed entirely on the TRON blockchain, where a liquidity pool, rather than a matched buyer and seller, sets the price and settles the exchange in a single transaction.</strong> You connect a self-custody wallet such as TronLink, choose the token you hold and the token you want, and the router finds the pool or chain of pools that gets you the best rate. Because TRON finalizes blocks in a few seconds and prices activity in Energy and Bandwidth instead of a volatile gas auction, a swap typically costs a small, predictable fraction of a cent and confirms almost immediately. The two assets never touch a custodial exchange; they move from the pool straight to your address, and nothing is held on your behalf at any point in the process.</div></section>
+<section class="c65478d"><h2 class="cb814ff">Why TRX/USDT (TRC-20) Liquidity Drives Every Tron Swap</h2><div class="ce9704f">The TRX/USDT pair on TRON carries some of the deepest on-chain liquidity of any trading pair in crypto, because TRC-20 USDT settles so cheaply that it has become a preferred rail for large transfers and exchange deposits across Asia and beyond. That volume concentrates liquidity in the pools a swap draws from, which keeps the price you are quoted close to the price you actually receive even on sizable trades. You can check how much TRC-20 USDT is moving at any given moment on <a href="https://tronscan.org/" rel="nofollow noopener" target="_blank">Tronscan</a>, where transfer counts and pool reserves are public and verifiable by anyone.<h3>TRC-20 USDT Dominance</h3>TRC-20 is one of several USDT standards, alongside ERC-20 on Ethereum and others, and it has grown into the busiest one by transaction count because fees stay low even during heavy network use. A <a href="https://www.defillama.com/chain/Tron" rel="nofollow noopener" target="_blank">DefiLlama</a> liquidity snapshot for TRON regularly shows USDT pools sitting far above most other pairs on the chain, exactly the depth large trades benefit from.<h3>Price Impact and Pool Depth</h3>Every pool holds a reserve ratio between its two assets, and a trade that is small relative to that reserve moves the price very little, while a trade that is large relative to it can move the price substantially. Before you confirm the trade, check the price impact the interface shows; a fraction of a percent is normal for TRX/USDT, while a thin or exotic token pair can display a far larger number.</div></section>
+<section class="c65478d"><h2 class="cb814ff">Energy, Bandwidth and Tron Swap Gas Costs</h2><div class="ce9704f">TRON does not charge gas the way Ethereum does. Every account instead consumes two resources, Energy and Bandwidth, and only the amount left over after those are used is billed in burned TRX. This model, documented in full by <a href="https://developers.tron.network/" rel="nofollow noopener" target="_blank">TRON's developer documentation</a>, is why a routine swap on a wallet with enough staked resources can cost a small fraction of a cent even when the network is busy.<h3>Energy Explained</h3>Energy is consumed by smart-contract execution, the actual swap logic running inside the exchange contract. You get a daily free allowance from staking TRX, and any Energy you lack is paid for in TRX burned on the spot, so a wallet that stakes a little TRX ahead of time avoids that extra cost entirely.<h3>Bandwidth Explained</h3>Bandwidth covers the size of the transaction itself on the network. Like Energy, a free daily allowance comes from staking TRX, and any shortfall is billed directly in TRX. Keeping a small staked balance is the simplest way to make sure a trade never gets stuck waiting on resources.</div></section>
+<section class="c65478d"><h2 class="cb814ff">SunSwap and Other DEXes for a Tron Swap</h2><div class="ce9704f">SunSwap is the largest automated market maker native to TRON and the default venue many wallets route swaps through first, pairing TRX, USDT and a long list of TRC-20 tokens across its pools. Its contracts and pool mechanics are described in the <a href="https://docs.sun.io/" rel="nofollow noopener" target="_blank">SunSwap documentation</a>, and any pool's live reserves can be verified independently on-chain rather than taken on trust from the interface.<h3>SunSwap's AMM Model</h3>SunSwap uses the constant-product logic popularized by Ethereum AMMs: each pool holds two assets, and a trade shifts the ratio between them according to a fixed formula, which is what produces slippage on larger orders. Liquidity providers earn a share of trading fees in return for supplying that depth.<h3>Other Tron DEXes</h3>SunSwap is not the only option. JustSwap, TRON's earlier AMM, and a handful of newer protocols also route swaps, sometimes with better pricing on a specific pair. A router that checks several pools before quoting a rate is generally worth preferring over committing to the first price shown.</div></section>
+<section class="c65478d"><h2 class="cb814ff">Tron Swap Fees and Slippage</h2><div class="ce9704f">A Tron Swap carries three separate costs: the tiny network fee paid in Energy, Bandwidth or TRX, the pool's trading fee taken on every trade, and slippage, the gap between the quoted price and the price you actually get once your order moves the pool. The table below breaks down what each one typically looks like.<table><thead><tr><th>Cost</th><th>Typical amount</th><th>When it applies</th></tr></thead><tbody><tr><td>Network fee</td><td>Fractions of a cent in TRX</td><td>Every transaction</td></tr><tr><td>Pool trading fee</td><td>Roughly 0.2%-0.3% of trade size</td><td>Every swap, paid to liquidity providers</td></tr><tr><td>Slippage</td><td>Negligible on TRX/USDT, higher on thin pairs</td><td>Scales with trade size versus pool depth</td></tr></tbody></table></div></section>
+<section class="c65478d"><h2 class="cb814ff">Step-by-Step: Executing a Tron Swap</h2><div class="ce9704f">The sequence below is the same whether you are trading TRX for USDT or moving between two smaller TRC-20 tokens.<ul><li>Connect a self-custody wallet such as TronLink to the DEX interface.</li><li>Select the token you hold and the token you want, then enter the amount.</li><li>Review the quoted rate, the minimum amount you will receive and the price impact.</li><li>Approve the token for trading if this is the first time you are swapping it, then confirm the transaction.</li><li>Wait for TRON's block confirmation, usually a few seconds, and check the result on Tronscan.</li></ul></div></section>
+<section class="c65478d"><h2 class="cb814ff">Is a Tron Swap Safe? Self-Custody and Risks</h2><div class="ce9704f">A swap routed through an audited, well-used contract keeps your tokens in your own wallet for the entire trade; nothing is deposited with a custodian and nothing can be frozen by a third party. The risks that remain are the ones every self-custody trade carries: the pool you pick, the approval you grant and the token contract you are trading.<h3>TRON's Background</h3>TRON is a public blockchain launched in 2017, described in detail on <a href="https://en.wikipedia.org/wiki/Tron_(cryptocurrency)" rel="nofollow noopener" target="_blank">Wikipedia</a>, built for fast, low-cost transactions, the same properties that keep swaps cheap and quick today. Checking a project's history before trusting it with funds is reasonable due diligence, not paranoia.<h3>What to Check Before You Sign</h3>Confirm the token contract address matches the one you intend to trade; many thin pairs get cloned under lookalike names. Grant only the allowance a single trade needs rather than an unlimited approval, and revoke old allowances you no longer use so a stale approval cannot be exploited later.</div></section>
+    <details class="cc3255b"><summary class="c7c40e0">What is a Tron Swap?</summary><div class="cd8021e">A Tron Swap is a token trade executed on the TRON blockchain through a decentralized exchange, where a liquidity pool sets the price and settles the exchange in one on-chain transaction, with no custodial order book involved.</div></details>
+<details class="cc3255b"><summary class="c7c40e0">Why is TRX/USDT liquidity so deep on TRON?</summary><div class="cd8021e">TRC-20 USDT settles cheaply and quickly, which has made it a preferred rail for transfers and exchange deposits across many markets. That volume concentrates deep liquidity in the TRX/USDT pools a swap draws from, keeping quoted prices close to what you actually receive.</div></details>
+<details class="cc3255b"><summary class="c7c40e0">How does TRON charge fees instead of gas?</summary><div class="cd8021e">TRON bills transactions through two resources, Energy and Bandwidth, with a free daily allowance from staking TRX. Any amount beyond that allowance is paid in TRX burned on the spot, which usually keeps a routine swap at a small fraction of a cent.</div></details>
+<details class="cc3255b"><summary class="c7c40e0">What is SunSwap?</summary><div class="cd8021e">SunSwap is the largest automated market maker native to TRON, pairing TRX, USDT and a wide range of TRC-20 tokens across liquidity pools. It uses the same constant-product pricing model popularized on Ethereum.</div></details>
+<details class="cc3255b"><summary class="c7c40e0">How much slippage should I expect?</summary><div class="cd8021e">Slippage is negligible on a deep pair like TRX/USDT for ordinary trade sizes, but it rises on thin or exotic pairs and on trades that are large relative to the pool's reserves. Always check the price impact shown before confirming.</div></details>
+<details class="cc3255b"><summary class="c7c40e0">Do I need an account to use a Tron Swap?</summary><div class="cd8021e">No. You connect a self-custody wallet such as TronLink and trade on-chain directly, with no sign-up and no custodian holding your funds at any point.</div></details>
+<details class="cc3255b"><summary class="c7c40e0">Is a Tron Swap safe?</summary><div class="cd8021e">Using an audited, widely used contract and keeping your own keys removes custodial risk, but you still need to confirm the token contract address and keep approvals limited. No legitimate swap interface will ever ask for your seed phrase.</div></details>
+  </main>
+  <section class="c394930 c005d39" aria-labelledby="sources-title">
+    <h2 class="ce678f7" id="sources-title">Sources</h2>
+    <ul class="c71c518"><li><a class="cc0dd8a" href="https://developers.tron.network/" rel="nofollow noopener" target="_blank">TRON developer documentation</a></li>
+<li><a class="cc0dd8a" href="https://tronscan.org/" rel="nofollow noopener" target="_blank">Tronscan explorer</a></li>
+<li><a class="cc0dd8a" href="https://docs.sun.io/" rel="nofollow noopener" target="_blank">SunSwap documentation</a></li>
+<li><a class="cc0dd8a" href="https://www.defillama.com/chain/Tron" rel="nofollow noopener" target="_blank">TRON on DefiLlama</a></li></ul>
+  </section>
+  <footer class="c62d964">
+    <span class="c5af85f">Exchange</span>
+    <p class="c6a22c1">Updated <span>Updated Oct 10, 2026</span></p>
+  </footer>
 </div>
-<div class="topbar-right">
-<div aria-label="Live metrics" class="ticker">
-<a aria-label="TRX price" class="tick" href="https://www.coingecko.com/en/coins/tron" rel="noopener noreferrer" target="_blank"><span>TRX</span> <b id="sig-trx">…</b> <span aria-hidden="true" class="ext">↗</span></a>
-<a aria-label="Network" class="tick" href="#network"><span>Network</span> <b>TRON</b></a>
-</div>
-<a class="nav-cta" href="dashboard/">Open App <span aria-hidden="true">↗</span></a>
-</div>
-</header>
-<main id="main">
-<section class="hero">
-<div class="hero-l">
-<span class="eyebrow"><span class="dot" aria-hidden="true"></span>TRON · TRC-20 · DEX</span>
-<h2 class="hero-h">Swap tokens on <span class="grad">TRON</span></h2>
-<p class="hero-lead"><strong>Swap Tron</strong> trades TRX, USDT and TRC-20 tokens on the TRON network through a non-custodial decentralized exchange, with your wallet signing every transaction and resources paid in TRX.</p>
-<div class="hero-cta">
-<a class="btn btn-primary" href="dashboard/">Open Swap Tron App <span aria-hidden="true" class="go">↗</span></a>
-<a class="btn btn-ghost" href="#what">How it works</a>
-</div>
-<div class="trust">
-<div class="trust-badge"><span class="tb-ico" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8"/></svg></span><div><b>TRON Network</b><span>TRC-20 tokens</span></div></div>
-<div class="trust-badge"><span class="tb-ico" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5l-8-3Z"/><path d="M9 12l2 2 4-4"/></svg></span><div><b>Non-Custodial</b><span>You sign</span></div></div>
-<div class="trust-badge"><span class="tb-ico" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><div><b>Energy &amp; Bandwidth</b><span>Paid in TRX</span></div></div>
-<div class="trust-badge"><span class="tb-ico" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M3 6h13M3 12h9M3 18h13M17 8l4 4-4 4"/></svg></span><div><b>DEX Routed</b><span>SunSwap-style</span></div></div>
-</div>
-</div>
-<div class="hero-r">
-<div class="swap-wrap">
-<section aria-labelledby="preview-title" class="swap-card">
-<div class="card-head">
-<p class="card-title" id="preview-title">Swap</p>
-<span class="preview-tag"><span aria-hidden="true"></span>Preview</span>
-</div>
-<div class="leg" id="leg-from">
-<div class="leg-top"><span class="leg-cap">You pay</span><span class="leg-bal">Balance: —</span></div>
-<div class="leg-body">
-<span class="amount dim">0.0</span>
-<span class="asset" role="button" tabindex="0" aria-label="From token: TRX"><span class="tok"><img alt="TRX token" decoding="async" height="28" loading="lazy" src="trx.png" width="28"/></span>TRX<svg aria-hidden="true" class="chev-sm" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
-</div>
-</div>
-<button aria-label="Swap direction" class="swap-arrow" id="route-swap" title="Swap direction" type="button">
-<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M8 4v13M8 4L4 8M8 4l4 4M16 20V7M16 20l-4-4M16 20l4-4"></path></svg>
-</button>
-<div class="leg" id="leg-to">
-<div class="leg-top"><span class="leg-cap">You receive</span><span class="leg-bal">Balance: —</span></div>
-<div class="leg-body">
-<span class="amount dim">0.0</span>
-<span class="asset" role="button" tabindex="0" aria-label="To token: USDT"><span class="tok"><img alt="USDT token" decoding="async" height="28" loading="lazy" src="usdt.png" width="28"/></span>USDT<svg aria-hidden="true" class="chev-sm" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
-</div>
-</div>
-<div class="route-panel">
-<div class="route-info"><b id="route-name">TRX → USDT</b><span>DEX route · TRON</span></div>
-<div class="route-tok"><span class="tok"><img alt="USDT token" decoding="async" height="22" loading="lazy" src="usdt.png" width="22"/></span> USDT</div>
-</div>
-<div class="route-row"><span>Network</span><b>TRON</b></div>
-<div class="route-row"><span>Custody</span><b>Non-custodial</b></div>
-<a class="swap-cta" href="dashboard/">Open Swap Tron App<span aria-hidden="true" class="cta-go">↗</span></a>
-<p class="swap-foot">Preview only · live quotes &amp; settlement happen in the app</p>
-</section>
-</div>
-</div>
-</section>
-<div class="content">
-<div class="section-intro reveal">
-<p><strong>Swap Tron</strong> means exchanging one TRON token for another — for example TRX for USDT — through an on-chain <a href="https://en.wikipedia.org/wiki/Decentralized_exchange" rel="noopener noreferrer nofollow" target="_blank">decentralized exchange</a> such as a SunSwap-style DEX. TRON is a layer-1 network whose native coin is TRX, and its tokens follow the <strong>TRC-20</strong> standard; USDT on TRON is one of the most widely used stablecoin transfers. Swaps are non-custodial: your wallet signs, and settlement happens through on-chain smart contracts. This is an independent dashboard and is <strong>not affiliated with or endorsed by the TRON Foundation</strong>.</p>
-</div>
-<div class="docs">
-<nav aria-label="On this page" class="toc">
-<p class="toc-h">On this page</p>
-<a href="#what">What is Swap Tron?</a>
-<a href="#how">How swapping works</a>
-<a href="#network">TRON network &amp; wallets</a>
-<a href="#tokens">TRC-20 tokens &amp; pairs</a>
-<a href="#fees">Energy, bandwidth &amp; fees</a>
-<a href="#safety">Is it safe?</a>
-<a href="#troubleshoot">Swap problems &amp; fixes</a>
-<a href="#faq">Swap Tron FAQ</a>
-<a href="#notes">Notes before you swap</a>
-</nav>
-<div class="doc-main">
-<details class="sec reveal" id="what" open="">
-<summary><h2>What is Swap Tron?</h2><span class="chev" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-<div class="sec-body"><p><strong>Swap Tron</strong> refers to swapping tokens on the TRON network through a <a href="https://en.wikipedia.org/wiki/Decentralized_exchange" rel="noopener noreferrer nofollow" target="_blank">decentralized exchange</a>, such as a SunSwap-style DEX. A liquidity pool quotes output from its reserves and your trade size, and your wallet authorizes the on-chain transaction, so no operator holds your account or keys.</p><p>This is an independent dashboard and is <strong>not affiliated with or endorsed by the TRON Foundation</strong>; live quotes, approvals and settlement happen in the external app.</p></div>
-</details>
-<details class="sec reveal" id="how" open="">
-<summary><h2>How swapping works</h2><span class="chev" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-<div class="sec-body"><p>Connect a TRON wallet such as <a href="https://www.tronlink.org/" rel="noopener noreferrer nofollow" target="_blank">TronLink</a>, choose the input token (for example TRX) and output token (for example USDT), and enter an amount. The live app shows the route, expected output, price impact, <a href="https://www.investopedia.com/terms/s/slippage.asp" rel="noopener noreferrer nofollow" target="_blank">slippage tolerance</a> and estimated resource cost before you sign.</p><p>Swapping the native TRX needs only resources; interacting with a <strong>TRC-20</strong> token can first need a one-time approval. The swap then enforces a minimum received and settles through TRON's smart contracts.</p></div>
-</details>
-<details class="sec reveal" id="network" open="">
-<summary><h2>TRON network &amp; wallets</h2><span class="chev" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-<div class="sec-body"><p><strong>TRON</strong> is a layer-1 blockchain whose native coin is <strong>TRX</strong>. It is not EVM-compatible in the MetaMask sense, so it uses TRON-native wallets like <a href="https://www.tronlink.org/" rel="noopener noreferrer nofollow" target="_blank">TronLink</a>. USDT on TRON (TRC-20) is among the most widely used stablecoin transfers by volume.</p><p>Keep a small TRX balance for resources. A swap stays on TRON; moving tokens to another network requires a separate cross-chain bridge. This resource is independent and not connected to the TRON Foundation.</p></div>
-</details>
-<details class="sec reveal" id="tokens" open="">
-<summary><h2>TRC-20 tokens &amp; pairs</h2><span class="chev" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-<div class="sec-body"><p>Tokens on TRON follow the <strong>TRC-20</strong> standard, TRON's equivalent of Ethereum's ERC-20. Common pairs include TRX against stablecoins like USDT and USDC, and TRX against tokens with liquidity on the network. USDT-TRON is a dominant pair by usage.</p><p>Select from the actual <strong>token contract address</strong> rather than the ticker alone — similarly named tokens can exist, so confirm the contract in the live app before sizing a trade.</p></div>
-</details>
-<details class="sec reveal" id="fees" open="">
-<summary><h2>Energy, bandwidth &amp; fees</h2><span class="chev" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-<div class="sec-body"><p>TRON meters transactions with <strong>bandwidth</strong> and <strong>energy</strong> rather than a single gas fee. Bandwidth covers basic transfers; energy covers smart-contract execution such as a swap. You pay by <strong>burning TRX</strong> or by <strong>staking TRX</strong> to obtain resources.</p><p>On top of resources, a swap has the DEX <strong>pool fee</strong> and <strong>price impact</strong> from available liquidity, and a TRC-20 interaction can add a one-time approval. Compare expected output and minimum received, and keep enough TRX for resources.</p></div>
-</details>
-<details class="sec reveal" id="safety" open="">
-<summary><h2>Is it safe?</h2><span class="chev" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-<div class="sec-body">
-<p>Swaps carry real risk. Read the notices below before you trade.</p>
-<details class="notice" open="">
-<summary><span class="n-ico" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></span><span class="n-title">Not affiliated with TRON</span><span class="chev-w" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-<div class="n-body">This is an independent, informational resource and is <strong>not affiliated with or endorsed by the TRON Foundation</strong>. Always confirm you are on the intended app. Swaps carry smart-contract, token-approval, liquidity and <a href="https://consumer.ftc.gov/articles/how-recognize-avoid-phishing-scams" rel="noopener noreferrer nofollow" target="_blank">phishing</a> risks.</div>
-</details>
-<details class="notice">
-<summary><span class="n-ico" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M9 12l2 2 4-4M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5l-8-3Z"/></svg></span><span class="n-title">Verify before you sign</span><span class="chev-w" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-<div class="n-body">Verify the token contract addresses, the pool, the spender, the allowance amount, the expected output and the minimum received before approving. Confirm you are trading the intended USDT-TRON contract, not a look-alike token.</div>
-</details>
-</div>
-</details>
-<details class="sec reveal" id="troubleshoot" open="">
-<summary><h2>Swap problems &amp; fixes</h2><span class="chev" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-<div class="sec-body"><p>Swap failures on TRON usually trace to missing TRX for resources, a missing approval, thin liquidity, or a quote that moved before confirmation.</p><ul><li><strong>Not enough energy/bandwidth:</strong> keep TRX to burn for resources, or stake TRX to obtain energy and bandwidth.</li><li><strong>Missing approval:</strong> wait for the TRC-20 approval to confirm and verify its spender.</li><li><strong>High price impact:</strong> a thin pool can move the price — reduce or split the order.</li><li><strong>Reverted transaction:</strong> refresh the route, since minimum received or pool state may have changed.</li><li><strong>Wrong token:</strong> confirm the token contract address, not just the ticker.</li></ul></div>
-</details>
-<details class="sec reveal" id="faq" open="">
-<summary><h2>Swap Tron FAQ</h2><span class="chev" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-<div class="sec-body">
-<details class="qa"><summary>What does it mean to swap on TRON?<span class="chev-q" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="a"><p>Swapping on TRON means exchanging one TRON token for another — for example TRX for USDT — through an on-chain DEX such as a SunSwap-style exchange. This is an independent dashboard and is not affiliated with TRON; live quotes and settlement happen in the external app.</p></div></details>
-<details class="qa"><summary>What is the TRON network?<span class="chev-q" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="a"><p>TRON is a layer-1 blockchain whose native coin is TRX. Tokens follow the TRC-20 standard, and USDT on TRON (TRC-20) is one of the most widely used stablecoin transfers. TRON uses its own wallets rather than MetaMask.</p></div></details>
-<details class="qa"><summary>How do I swap tokens on TRON?<span class="chev-q" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="a"><p>Connect a TRON wallet such as TronLink, pick input and output tokens, review the DEX route, expected output and minimum received, and sign. Swaps are non-custodial and settle through on-chain smart contracts on TRON.</p></div></details>
-<details class="qa"><summary>What are energy and bandwidth on TRON?<span class="chev-q" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="a"><p>TRON meters transactions with bandwidth and energy rather than a simple gas fee. Bandwidth covers basic transfers, and energy covers smart-contract execution such as swaps. You burn TRX to pay for them or stake TRX to obtain resources.</p></div></details>
-<details class="qa"><summary>What does a swap on TRON cost?<span class="chev-q" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="a"><p>The resources consumed — bandwidth and energy, paid by burning TRX or covered by staked resources — plus the DEX pool fee and price impact. A TRC-20 interaction can require a one-time approval.</p></div></details>
-<details class="qa"><summary>Do I need TRX to swap on TRON?<span class="chev-q" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary><div class="a"><p>Yes. TRON transactions consume bandwidth and energy, which you pay by burning TRX or staking TRX for resources, so you need a small TRX balance to swap even when trading other tokens like USDT.</p></div></details>
-</div>
-</details>
-<section class="field-notes reveal" id="notes">
-<h2>Notes before you swap on TRON</h2>
-<div class="fn-body"><strong>Keep a little TRX for resources.</strong> Every TRON transaction consumes bandwidth and energy, paid by burning or staking TRX, so plan for it. <strong>Before you sign:</strong><ul><li>Confirm the wallet is a TRON wallet and holds TRX for resources.</li><li>Verify the token contract addresses — especially the intended USDT-TRON contract.</li><li>Read the price impact and minimum received; reduce size on a thin pool.</li></ul>Independent reference — not affiliated with or endorsed by the TRON Foundation or any DEX. Not financial advice.</div>
-</section>
-</div>
-</div>
-</div>
-</main>
-<footer class="site-foot"><div class="wrap">Swap Tron — independent guide &amp; technical reference. Not affiliated with or endorsed by the TRON Foundation or any DEX. Not financial advice. · <a href="dashboard/">Open Swap Tron App ↗</a> · © 2026</div></footer>
 <script>
-(function(){
-  "use strict";
-  document.documentElement.classList.add("js");
-  var $=function(id){return document.getElementById(id);};
-  var SIGNALS=[{"t":"price","id":"sig-trx","cg":"tron","chg":true}];
-  (function(){var S=SIGNALS;if(!S||!S.length)return;function el(id){return document.getElementById(id);}function hide(id){var e=el(id);if(e){var t=e.closest(".tick");if(t)t.style.display="none";}}function set(id,x){var e=el(id);if(e)e.textContent=x;}function usd(n){n=Number(n);return "$"+n.toLocaleString("en-US",{maximumFractionDigits:n<1?4:2});}function jf(u){return fetch(u).then(function(r){if(!r.ok)throw 0;return r.json();});}var ids=S.map(function(s){return s.cg;}).join(",");jf("https://api.coingecko.com/api/v3/simple/price?ids="+ids+"&vs_currencies=usd&include_24hr_change=true").then(function(v){S.forEach(function(s){var d=v[s.cg];if(!d){hide(s.id);return;}if(isFinite(d.usd)){var x=usd(d.usd);if(s.chg&&isFinite(d.usd_24h_change)){var c=d.usd_24h_change;x+=" "+(c>=0?"▲":"▼")+Math.abs(c).toFixed(1)+"%";}set(s.id,x);}else hide(s.id);});}).catch(function(){S.forEach(function(s){hide(s.id);});});})();
-  var swap=$("route-swap");
-  if(swap)swap.addEventListener("click",function(){var from=$("leg-from"),to=$("leg-to");if(from&&to){var fa=from.querySelector(".asset"),ta=to.querySelector(".asset");var tmp=fa.innerHTML;fa.innerHTML=ta.innerHTML;ta.innerHTML=tmp;}var name=$("route-name");if(name)name.textContent=(name.textContent==="TRX → USDT")?"USDT → TRX":"TRX → USDT";});
-  Array.prototype.forEach.call(document.querySelectorAll("details"),function(d){var s=d.querySelector("summary");if(!s)return;s.setAttribute("aria-expanded",d.open?"true":"false");d.addEventListener("toggle",function(){s.setAttribute("aria-expanded",d.open?"true":"false");});});
-  Array.prototype.forEach.call(document.querySelectorAll('.asset[role="button"]'),function(b){b.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();if(swap)swap.click();}});});
-  var reveals=document.querySelectorAll(".reveal");var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if(reveals.length&&"IntersectionObserver" in window&&!reduce){var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{rootMargin:"0px 0px -8% 0px",threshold:0.08});reveals.forEach(function(el){io.observe(el);});}else{reveals.forEach(function(el){el.classList.add("in");});}
-  function openHash(){var id=location.hash.slice(1);if(!id)return;var el=document.getElementById(id);if(el&&el.tagName==="DETAILS"){el.open=true;el.classList.add("in");}}
-  window.addEventListener("hashchange",openHash);openHash();
-  document.addEventListener("click",function(e){var a=e.target.closest('a[href^="#"]');if(!a)return;var el=document.getElementById(a.getAttribute("href").slice(1));if(el&&el.tagName==="DETAILS"){el.open=true;el.classList.add("in");}});
+(() => {
+  'use strict';
+  const amount = document.getElementById('amount');
+  const received = document.getElementById('received');
+  const rateOutput = document.getElementById('rate');
+  const feeOutput = document.getElementById('network-fee');
+  const message = document.getElementById('amount-message');
+  const exchangeRate = 0.985;
+  const baseFee = 0.25;
+  const networkFactor = 0.001;
+  const formatter = new Intl.NumberFormat('en-US', { maximumFractionDigits: 6 });
+  let timer;
+
+  function clearQuote() {
+    received.value = '—';
+    rateOutput.value = '—';
+    feeOutput.value = '—';
+  }
+
+  function updateQuote() {
+    clearTimeout(timer);
+    const raw = amount.value.trim();
+    const value = amount.valueAsNumber;
+    const valid = raw !== '' && Number.isFinite(value) && value >= 1 && value <= 1000000 && !amount.validity.badInput;
+    amount.setAttribute('aria-invalid', String(!valid));
+    message.dataset.invalid = String(!valid);
+    if (!valid) {
+      clearQuote();
+      const error = 'Enter an amount from 1 to 1,000,000.';
+      amount.setCustomValidity(error);
+      message.textContent = error;
+      return;
+    }
+    amount.setCustomValidity('');
+    const networkFee = baseFee + value * networkFactor;
+    const netAmount = Math.max(0, value * exchangeRate - networkFee);
+    received.value = formatter.format(netAmount);
+    rateOutput.value = '1 → ' + formatter.format(exchangeRate);
+    feeOutput.value = formatter.format(networkFee) + ' destination units';
+    message.textContent = '';
+  }
+
+  amount.addEventListener('input', () => {
+    clearTimeout(timer);
+    amount.setCustomValidity('');
+    clearQuote();
+    timer = setTimeout(updateQuote, 200);
+  });
+  amount.addEventListener('change', updateQuote);
+  amount.addEventListener('blur', updateQuote);
+  updateQuote();
 })();
-(function(){var links=[].slice.call(document.querySelectorAll(".toc a"));if(!links.length)return;var secs=[].slice.call(document.querySelectorAll(".doc-main [id]")).filter(function(s){return document.querySelector('.toc a[href="#'+s.id+'"]');});if(!secs.length)return;function setA(id){links.forEach(function(a){a.classList.toggle("active",a.getAttribute("href")==="#"+id);});}function up(){var cur=secs[0];for(var i=0;i<secs.length;i++){if(secs[i].getBoundingClientRect().top-120<=0)cur=secs[i];else break;}if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-4)cur=secs[secs.length-1];if(cur)setA(cur.id);}window.addEventListener("scroll",up,{passive:true});window.addEventListener("resize",up);up();})();
 </script>
 </body>
 </html>
